@@ -44,11 +44,11 @@ copy & paste below code
 5. $ nignx -v , $ node -v  # all these pre installed  
 
 
-Note: I am using below Version 
+Note: I am using below Version <br>
 
-Oracle VM VirtualBox Version : 6.0
-vagrant : 2.2.3
-OS : windows 10 home edition 
+Oracle VM VirtualBox Version : 6.0 <br>
+vagrant : 2.2.3 <br>
+OS : windows 10 home edition <br>
 
 
 
