@@ -8,26 +8,29 @@ make file 'Vagrantfile' in your directory
 
 copy & paste below code
 
-Vagrant.configure(2) do |config|  
-  config.vm.box = "ubuntu/trusty64"  # vm ubuntu 14.04 
-  config.vm.network "forwarded_port", guest: 80, host: 8080 # forwarded port 
-  config.vm.network "private_network", ip: "192.168.33.10"  # this is your forwarded i.p 
+        
+    Vagrant.configure(2) do |config|  
+     config.vm.box = "ubuntu/trusty64"  # vm ubuntu 14.04 
+     config.vm.network "forwarded_port", guest: 80, host: 8080 # forwarded port 
+     config.vm.network "private_network", ip: "192.168.33.10"  # this is your forwarded i.p 
+     
+      # below command will auto run after vm installed 
+      # you can add more commands as per your requirement 
+      # I need nginx with nodeJs auto installed in vm at time of vm installation you can add more as per your requirement
+    
+    config.vm.provision "shell", inline: <<-SHELL
+      sudo apt-get update
+      sudo add-apt-repository ppa:nginx/stable
+      sudo apt-get install -y software-properties-common
+      sudo apt-get update
+      sudo apt-get install -y nginx
+      curl -sL https://deb.nodesource.com/setup | sudo bash -
+      sudo apt-get install -y nodejs
+   
+      SHELL
+    end 
+ 
 
- below command will auto run after vm installed 
- you can add more commands as per your requirement 
- I need nginx with nodeJs auto installed in vm at time of vm installation you can add more as per your requirement
-
-  config.vm.provision "shell", inline: <<-SHELL
-    sudo apt-get update
-    sudo add-apt-repository ppa:nginx/stable
-    sudo apt-get install -y software-properties-common
-    sudo apt-get update
-    sudo apt-get install -y nginx
-
-    curl -sL https://deb.nodesource.com/setup | sudo bash -
-    sudo apt-get install -y nodejs
-  SHELL
-end  
 
 
 <b>Run command from PowerShell on windows for linux/mac from terminal</b>
